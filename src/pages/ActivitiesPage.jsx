@@ -1,4 +1,5 @@
 import EventCard from "../components/EventCard.jsx";
+import "./ActivitiesPage.css"
 
 const ActivitiesPage = () => {
   return (

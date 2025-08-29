@@ -1,3 +1,5 @@
+import "./EventCard.css"
+
 const EventCard = ({ title, description }) => {
   return (
     <div className="p-4 bg-white rounded-2xl shadow-md">

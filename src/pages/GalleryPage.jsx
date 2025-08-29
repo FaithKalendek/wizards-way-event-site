@@ -1,3 +1,5 @@
+import "./GalleryPage.css"
+
 const GalleryPage = () => {
   return (
     <section>

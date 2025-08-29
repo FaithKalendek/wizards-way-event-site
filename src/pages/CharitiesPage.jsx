@@ -1,3 +1,5 @@
+import "./CharitiesPage.css"
+
 const CharitiesPage = () => {
   return (
     <section>

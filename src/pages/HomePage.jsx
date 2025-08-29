@@ -1,4 +1,5 @@
 import Banner from "../components/Banner.jsx";
+import "./HomePage.css"
 
 const HomePage = () => {
   return (

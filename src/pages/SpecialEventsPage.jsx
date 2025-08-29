@@ -1,3 +1,5 @@
+import "./SpecialEventsPage.css"
+
 const SpecialEventsPage = () => {
   return (
     <section>

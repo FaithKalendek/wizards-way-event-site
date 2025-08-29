@@ -1,3 +1,5 @@
+import "./EventInfoPage.css"
+
 const EventInfoPage = () => {
   return (
     <section>

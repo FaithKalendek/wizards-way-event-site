@@ -1,3 +1,5 @@
+import "./ContactPage.css"
+
 const ContactPage = () => {
   return (
     <section>
