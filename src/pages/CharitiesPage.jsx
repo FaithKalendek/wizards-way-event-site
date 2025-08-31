@@ -1,5 +1,7 @@
 import "./CharitiesPage.css"
 
+/*Just info about each of the charities, what’s needed, how to donate, maybe some pics */
+
 const CharitiesPage = () => {
   return (
     <section>

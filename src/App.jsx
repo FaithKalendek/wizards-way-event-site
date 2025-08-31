@@ -1,8 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
-import EventInfoPage from "./pages/EventInfoPage.jsx";
+import DirectionsPage from "./pages/DirectionsPage.jsx";
 import ActivitiesPage from "./pages/ActivitiesPage.jsx";
-import SpecialEventsPage from "./pages/SpecialEventsPage.jsx";
 import CharitiesPage from "./pages/CharitiesPage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
@@ -11,9 +10,8 @@ function App() {
 
   let element = useRoutes([
     { path: "/", element: <HomePage /> },
-    { path: "/event-info", element: <EventInfoPage /> },
+    { path: "/directions", element: <DirectionsPage /> },
     { path: "/activities", element: <ActivitiesPage /> },
-    { path: "/special-events", element: <SpecialEventsPage /> },
     { path: "/charities", element: <CharitiesPage /> },
     { path: "/gallery", element: <GalleryPage /> },
     { path: "/contact", element: <ContactPage /> }
@@ -35,9 +33,8 @@ function App() {
           </a>
         </div>
         <div className="right-nav">
-          <a href="/event-info">Event Info</a>
+          <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
-          <a href="/special-events">Special Events</a>
           <a href="/gallery">Gallery</a>
           <a href="/charities">Charities</a>
           <a href="/contact">Contact</a>
@@ -45,10 +42,12 @@ function App() {
       </nav>
       <div className="page-wrapper">{element}</div>
       <footer className="Footer">
-        <span>
-          &copy; {new Date().getFullYear()} Wizards' Way | 
-          <a href="/contact" style={{ marginLeft: '8px' }}>Contact</a> | 
-          <a href="/charities" style={{ marginLeft: '8px' }}>Charities</a>
+        <span style={{ display: 'block', marginBottom: '0.5rem' }}>
+          <a href="/contact" style={{ marginRight: '12px' }}>Contact</a>|
+          <a href="/charities" style={{ marginLeft: '12px' }}>Charities</a>
+        </span>
+        <span style={{ fontSize: '0.95em', color: '#ffd700' }}>
+          This is a fan-created event site for charitable purposes. Not affiliated with Warner Bros. or J.K. Rowling.
         </span>
       </footer>
     </div>
