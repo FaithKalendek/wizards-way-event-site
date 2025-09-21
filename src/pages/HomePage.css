@@ -1,0 +1,4 @@
+/* Home page small layout helpers */
+.home-hero{margin-top:1rem}
+.home-section{padding:1.5rem;text-align:center}
+.home-section h3{color:var(--gold)}

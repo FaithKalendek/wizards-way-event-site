@@ -22,10 +22,12 @@ a:hover {
   color: #535bf2;
 }
 
+/* Ensure default link color in navbar isn't overridden by browser or global hover colors */
+.NavBar a:hover{color:var(--gold)}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: block;
   min-width: 320px;
   min-height: 100vh;
 }

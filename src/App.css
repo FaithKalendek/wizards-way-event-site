@@ -1,8 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 0; /* removed global padding as requested */
+  text-align: left;
+  height: max-content; /* allow root to size to its content */
 }
 
 .logo {
@@ -39,4 +40,86 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Site theme variables and base */
+:root{
+  --bg: #1e1b20;
+  --muted: #c2c2c2;
+  --gold: #e3a71a;
+  --slate: #5e6c7e;
+  --navy: #1a1b2f;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  color:var(--muted);
+  font-family: 'Georgia', serif;
+}
+
+/* Put the site background on #root so it always covers content and footer */
+#root{
+  background:var(--bg);
+  min-height:100vh;
+}
+
+h1,h2,h3{color:var(--muted); margin:0}
+h1,h2,h3{color:var(--muted); margin:0}
+.heading-main{font-size:3rem;font-weight:bold;color:var(--gold)}
+.section-title{font-size:1.5rem;font-weight:600;color:var(--gold);margin:2rem 0 1rem}
+.heading-sub{font-size:2rem;font-weight:600;color:var(--slate);margin-top:1rem}
+
+/* Nav layout - full width bar with inner container */
+.NavBar{width:100%;background:#2d2d4d;position:fixed;top:0;left:0;z-index:1000;box-shadow:inset 0 -1px 0 rgba(255,255,255,0.02)}
+.NavBar .container{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.5rem 2rem}
+.left-nav a,.right-nav a{color:#fff;text-decoration:none;margin:0 .5rem}
+.right-nav a:hover{color:var(--gold)}
+
+/* Page wrapper ensures content area uses correct spacing; keep background same as body */
+.page-wrapper{
+  background:transparent;
+  padding:2rem; /* uniform padding now; bottom padding keeps space above footer */
+  margin-top:0; /* avoid collapsed margins creating gaps */
+  margin-bottom:0;
+  border-radius:0;
+  padding-top:5.25rem; /* offset for fixed nav height (slightly larger to match nav sizing) */
+  overflow:auto; /* create a new block formatting context to prevent margin collapse */
+}
+
+.Footer{width:100%;background:#2d2d4d;padding:0;margin-top:0;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.03)}
+.Footer .container{max-width:1280px;margin:0 auto;padding:1rem 2rem 0 2rem;text-align:center}
+.Footer a{color:#ffd700;text-decoration:underline;margin:0 .5rem}
+.footer-links{display:block;margin-bottom:.5rem}
+.footer-disclaimer{font-size:0.95em;color:#ffd700}
+
+/* Buttons */
+.btn-primary{background:var(--gold);color:#000;font-weight:600;padding:.75rem 1.5rem;border:none;border-radius:.5rem;cursor:pointer}
+.btn-primary:hover{background:#c89015}
+.btn-secondary{background:var(--slate);color:var(--muted);padding:.75rem 1.5rem;border:none;border-radius:.5rem}
+.btn-secondary:hover{background:#495a6b}
+
+/* Cards */
+.card-grid{display:flex;gap:1rem;margin-top:1rem}
+.card-border{flex:1;background-color:var(--navy);border:2px solid var(--slate);border-radius:.75rem;padding:1.5rem;color:var(--muted)}
+.card-title{font-size:1.25rem;font-weight:600;color:var(--gold);margin-bottom:.5rem}
+
+/* Maroon border utility */
+.maroon-border{display:none}
+
+/* Page section helpers to avoid bottom gaps before footer */
+.page-section{margin-bottom:0;padding-bottom:0}
+
+/* Directions helpers moved to DirectionsPage.css */
+
+@media(max-width:600px){
+  .NavBar .container{flex-direction:column;gap:.5rem}
+  .Footer .container{padding:0 1rem}
+}
+
+/* Ensure nav svg (home icon) uses gold fill instead of black */
+.NavBar svg path{fill:var(--gold)}
+
+@media(max-width:600px){
+  .NavBar{flex-direction:column;gap:.5rem}
 }

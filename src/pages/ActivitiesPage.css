@@ -1,0 +1,6 @@
+.page-section{padding:2rem}
+.page-section h2{color:var(--gold)}
+.grid{display:grid}
+.gap-4{gap:1rem}
+.md\:grid-cols-2{grid-template-columns:1fr}
+@media(min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,1fr)}}

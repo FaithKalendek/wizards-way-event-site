@@ -1,0 +1,21 @@
+/* Activity Card styles matching StyleTest design */
+.card-border {
+	background-color: var(--navy);
+	border: 2px solid var(--slate);
+	border-radius: 0.75rem;
+	padding: 1.25rem;
+	color: var(--muted);
+}
+
+.card-title {
+	font-size: 1.25rem;
+	font-weight: 600;
+	color: var(--gold);
+	margin-bottom: 0.5rem;
+}
+
+.body-text {
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--muted);
+}

@@ -5,8 +5,8 @@ Can’t style plugins, but can style borders around them, etc. */
 
 const GalleryPage = () => {
   return (
-    <section>
-      <h2 className="text-3xl font-bold">Gallery</h2>
+    <section className="page-section">
+      <h2 className="section-title">Gallery</h2>
       <p>Photos from past Wizard’s Way events will go here.</p>
     </section>
   );

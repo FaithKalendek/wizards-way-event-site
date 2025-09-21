@@ -1,0 +1,88 @@
+/* Base styles */
+.style-test-container {
+  background-color: #1e1b20; /* cool dark brown/charcoal */
+  color: #c2c2c2;
+  font-family: 'Georgia', serif;
+  padding: 2rem;
+}
+
+/* Headings */
+.heading-main {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e3a71a; /* gold */
+}
+
+.heading-sub {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #5e6c7e; /* slate accent */
+  margin-top: 1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e3a71a; /* gold accent */
+  margin: 2rem 0 1rem;
+}
+
+/* Body text */
+.body-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #c2c2c2;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #e3a71a; /* gold */
+  color: black;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #c89015; /* darker gold */
+}
+
+.btn-secondary {
+  background-color: #5e6c7e; /* slate */
+  color: #c2c2c2;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: #495a6b; /* darker slate */
+}
+
+/* Cards */
+.card-grid {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-border {
+  flex: 1;
+  background-color: #1a1b2f; /* navy block */
+  border: 2px solid #5e6c7e; /* slate accent */
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  color: #c2c2c2;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e3a71a; /* gold */
+  margin-bottom: 0.5rem;
+}

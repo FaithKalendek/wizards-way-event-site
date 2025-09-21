@@ -8,9 +8,9 @@ Short 2–3 sentence description */
 
 const ActivitiesPage = () => {
   return (
-    <section>
-      <h2 className="text-3xl font-bold">Activities</h2>
-      <div className="grid gap-4 md:grid-cols-2">
+    <section className="page-section">
+      <h2 className="section-title">Activities</h2>
+      <div className="card-grid">
         <ActivityCard title="Triwizard Games" description="Try your hand at magical challenges!" />
         <ActivityCard title="Food Trucks" description="Grab a magical bite from local vendors." />
       </div>

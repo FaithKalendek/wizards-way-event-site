@@ -5,6 +5,7 @@ import ActivitiesPage from "./pages/ActivitiesPage.jsx";
 import CharitiesPage from "./pages/CharitiesPage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import StyleTest from "./pages/StyleTest.jsx";
 
 function App() {
 
@@ -14,12 +15,14 @@ function App() {
     { path: "/activities", element: <ActivitiesPage /> },
     { path: "/charities", element: <CharitiesPage /> },
     { path: "/gallery", element: <GalleryPage /> },
-    { path: "/contact", element: <ContactPage /> }
+    { path: "/contact", element: <ContactPage /> },
+    { path: "/styletest", element: <StyleTest /> }
   ]);
 
   return (
     <div className="App">
       <nav className="NavBar">
+        <div className="container">
         <div className="left-nav">
           <a href="/">
             <svg
@@ -39,16 +42,19 @@ function App() {
           <a href="/charities">Charities</a>
           <a href="/contact">Contact</a>
         </div>
+        </div>
       </nav>
       <div className="page-wrapper">{element}</div>
       <footer className="Footer">
-        <span style={{ display: 'block', marginBottom: '0.5rem' }}>
-          <a href="/contact" style={{ marginRight: '12px' }}>Contact</a>|
-          <a href="/charities" style={{ marginLeft: '12px' }}>Charities</a>
+        <div className="container">
+        <span className="footer-links">
+          <a href="/contact">Contact</a>|
+          <a href="/charities">Charities</a>
         </span>
-        <span style={{ fontSize: '0.95em', color: '#ffd700' }}>
+        <span className="footer-disclaimer">
           This is a fan-created event site for charitable purposes. Not affiliated with Warner Bros. or J.K. Rowling.
         </span>
+        </div>
       </footer>
     </div>
   );
