@@ -1,12 +1,49 @@
-/* empty */
-.banner{
-	text-align:center;
-	padding:3rem 1rem;
-	background: linear-gradient(180deg, rgba(99,102,241,1) 0%, rgba(79,70,229,1) 100%);
-	color: #fff;
+.banner {
+	text-align: center;
+	padding: 4rem 1rem;
+	background: url(https://tse4.mm.bing.net/th/id/OIP.ow8uTPJqk-aguasrXJrPkQHaEJ?pid=Api);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 	border-radius: 1rem;
-	box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-.banner h2{font-size:2.25rem;margin:0}
-.banner p{margin-top:.5rem;font-size:1.125rem;color:var(--slate)}
-.banner .subtitle{color:var(--slate);font-weight:600}
+
+.banner h2 {
+	color: #bb36fd;
+	font-family: "Playfair Display", Georgia, serif;
+	font-weight: 800;
+	font-size: 4.6rem;
+	letter-spacing: 1px;
+	padding-bottom: 5%;
+	-webkit-text-stroke: 0.6px rgba(0,0,0,0.9); /* subtle edge for clarity */
+	/* Strong layered glow: deep drop, magenta core, cyan fringe for contrast */
+	text-shadow:
+	  0 12px 36px rgba(0,0,0,0.65),           /* deep drop */
+	  0 0 12px rgba(255,102,230,0.55),        /* inner magenta glow */
+	  0 0 30px rgba(54,220,200,0.28),         /* cyan fringe */
+	  0 0 48px rgba(54,220,200,0.14);         /* outer wash */
+}
+
+@media (max-width:600px){
+  .banner h2 { text-shadow: 0 5px 12px rgba(0,0,0,0.5), 0 0 8px rgba(234,75,242,0.30); }
+}
+
+.banner .subtitle {
+		color: #9ef2e6; /* soft aqua */
+		font-weight: 600;
+		font-size: 1.35rem;
+		margin-top: .6rem;
+		letter-spacing: 0.2px;
+		/* Mirror headline glow but softer and with a watercolor edge */
+		-webkit-text-stroke: 0.3px rgba(0,0,0,0.75);
+		text-shadow:
+			0 8px 22px rgba(0,0,0,0.5),           /* depth */
+			0 0 8px rgba(54,200,170,0.34),        /* inner aqua glow */
+			0 0 20px rgba(54,200,170,0.18),       /* outer aqua wash */
+			0 0 30px rgb(34 47 77 / 22%);         /* watercolor navy halo */
+}
+
+@media (max-width:600px){
+	.banner .subtitle{font-size:1rem;text-shadow:0 3px 8px rgba(0,0,0,0.45), 0 0 6px rgba(54,200,170,0.22)}
+}

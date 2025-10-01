@@ -10,11 +10,17 @@ Small cards or icons for each charity supported (book drive + food pantry) & lit
 const HomePage = () => {
   return (
     <>
-      <Banner title="Wizard's Way: Year 4" subtitle="Goblet of Fire Adventure Awaits" />
+      <Banner
+        title="Wizard's Way — Year 4"
+        subtitle="November 7–9, 2025 — Free family fun (suggested donation to benefit local charities)"
+        style={{ ['--banner-image']: "url('/banner-candles.jpg')" }}
+      />
       <section className="home-section">
-        <h3 className="heading-sub">Event Dates</h3>
-        <p>September 20–22, 2025</p>
-        <p>Free Family Fun | Donations Welcome</p>
+        <h3 className="heading-sub">Event Dates & Times</h3>
+        <p>Friday, November 7 — 6:00 PM to 9:00 PM</p>
+        <p>Saturday, November 8 — 1:00 PM to 4:00 PM (Yule Ball 6:00 PM to 9:00 PM)</p>
+        <p>Sunday, November 9 — 1:00 PM to 6:00 PM</p>
+        <p className="muted">No admission charge. Suggested donation: $10 per person / $20 per family to benefit our partner charities.</p>
       </section>
     </>
   );

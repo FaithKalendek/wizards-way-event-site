@@ -4,6 +4,7 @@ import DirectionsPage from "./pages/DirectionsPage.jsx";
 import ActivitiesPage from "./pages/ActivitiesPage.jsx";
 import CharitiesPage from "./pages/CharitiesPage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
+import FAQPage from "./pages/FAQPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import StyleTest from "./pages/StyleTest.jsx";
 
@@ -14,7 +15,8 @@ function App() {
     { path: "/directions", element: <DirectionsPage /> },
     { path: "/activities", element: <ActivitiesPage /> },
     { path: "/charities", element: <CharitiesPage /> },
-    { path: "/gallery", element: <GalleryPage /> },
+  { path: "/gallery", element: <GalleryPage /> },
+  { path: "/faq", element: <FAQPage /> },
     { path: "/contact", element: <ContactPage /> },
     { path: "/styletest", element: <StyleTest /> }
   ]);
@@ -39,6 +41,7 @@ function App() {
           <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
           <a href="/gallery">Gallery</a>
+          <a href="/faq">FAQ</a>
           <a href="/charities">Charities</a>
           <a href="/contact">Contact</a>
         </div>
@@ -49,7 +52,8 @@ function App() {
         <div className="container">
         <span className="footer-links">
           <a href="/contact">Contact</a>|
-          <a href="/charities">Charities</a>
+          <a href="/charities">Charities</a>|
+          <a href="/faq">FAQ</a>
         </span>
         <span className="footer-disclaimer">
           This is a fan-created event site for charitable purposes. Not affiliated with Warner Bros. or J.K. Rowling.
