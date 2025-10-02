@@ -1,0 +1,4 @@
+.about-page{max-width:900px;margin:0 auto}
+.about-page .lead{font-size:1.125rem;margin-bottom:1rem;color:var(--muted)}
+.about-page h3{color:var(--gold);margin-top:1.25rem}
+.about-page p{color:var(--muted);line-height:1.6}
