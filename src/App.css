@@ -123,3 +123,67 @@ h1,h2,h3{color:var(--muted); margin:0}
 @media(max-width:600px){
   .NavBar{flex-direction:column;gap:.5rem}
 }
+
+/* Mobile tweaks: improve spacing, typography, and stacking on phones */
+@media (max-width:600px){
+  /* reduce global page padding so content fits smaller screens */
+  .page-wrapper{padding:1rem;padding-top:5.25rem}
+
+  /* headings scale down for small screens */
+  .heading-main{font-size:2rem}
+  .heading-sub{font-size:1.25rem}
+  .section-title{font-size:1.25rem;margin:1rem 0 .75rem}
+
+  /* logo and nav touch targets */
+  .logo{height:3.5rem;padding:.5rem}
+  .NavBar .container{padding:.6rem 1rem}
+
+  /* stack card grid into a single column for narrow screens */
+  .card-grid{flex-direction:column}
+
+  /* buttons larger and full-width for easier tapping */
+  .btn-primary,.btn-secondary{width:100%;padding:.85rem 1rem;border-radius:.5rem}
+
+  /* footer spacing */
+  .Footer .container{padding:1rem}
+
+  /* Banner tweaks: ensure headline and subtitle scale (the Banner component already has some media rules) */
+  .banner{padding:2rem 1rem}
+  .banner h2{font-size:2.2rem}
+
+  /* gift small page-section padding on mobile for tighter layout */
+  .page-section{padding:1rem}
+}
+
+/* Mobile nav toggle button and vertical menu */
+.nav-toggle{
+  display:none; /* shown only on mobile */
+  background:transparent;border:none;color:#fff;font-size:1.5rem;padding:.25rem .5rem;cursor:pointer
+}
+
+@media (max-width:600px){
+  .nav-toggle{display:block}
+  /* hide the right-nav by default on very small screens */
+  .right-nav{display:none;flex-direction:column;align-items:flex-start;width:100%}
+  .right-nav.open{display:flex;background:transparent;padding:.5rem 0}
+  .right-nav a{display:block;padding:.5rem 1rem;width:100%;border-radius:.25rem}
+}
+
+@media (max-width:600px){
+  /* hide the standalone home icon on mobile - Home is in the menu */
+  .left-nav{display:none}
+  /* left align the hamburger so it acts as the primary nav control */
+  .NavBar .container{align-items:flex-start}
+  .nav-toggle{order:-1;margin-right:auto}
+}
+
+/* Hamburger animation */
+.nav-toggle{background:transparent;border:none;padding:.35rem .5rem}
+.hamburger{display:inline-block;width:22px;height:18px;position:relative}
+.hamburger span{display:block;position:absolute;height:2px;width:100%;background:#fff;left:0;transition:transform .25s ease,opacity .2s ease}
+.hamburger span:nth-child(1){top:0}
+.hamburger span:nth-child(2){top:8px}
+.hamburger span:nth-child(3){top:16px}
+.nav-toggle.open .hamburger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle.open .hamburger span:nth-child(2){opacity:0}
+.nav-toggle.open .hamburger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}

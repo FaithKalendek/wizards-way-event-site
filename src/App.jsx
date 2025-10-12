@@ -1,4 +1,5 @@
 import { useRoutes } from "react-router-dom";
+import { useState } from "react";
 import HomePage from "./pages/HomePage.jsx";
 import DirectionsPage from "./pages/DirectionsPage.jsx";
 import ActivitiesPage from "./pages/ActivitiesPage.jsx";
@@ -10,6 +11,8 @@ import ContactPage from "./pages/ContactPage.jsx";
 import StyleTest from "./pages/StyleTest.jsx";
 
 function App() {
+
+  const [navOpen, setNavOpen] = useState(false);
 
   let element = useRoutes([
     { path: "/", element: <HomePage /> },
@@ -39,7 +42,28 @@ function App() {
             </svg>
           </a>
         </div>
-        <div className="right-nav">
+        {/* mobile nav toggle */}
+        <button
+          className={`nav-toggle ${navOpen ? 'open' : ''}`}
+          aria-label="Toggle navigation"
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen(v => !v)}
+        >
+          <span className="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <div
+          className={`right-nav ${navOpen ? "open" : ""}`}
+          onClick={(e) => {
+            // close menu when a nav link is tapped (mobile)
+            if (e.target && e.target.tagName === 'A' && navOpen) setNavOpen(false);
+          }}
+        >
+          <a href="/">Home</a>
           <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
           <a href="/gallery">Gallery</a>
