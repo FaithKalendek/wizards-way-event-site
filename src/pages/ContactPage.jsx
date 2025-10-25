@@ -6,8 +6,8 @@ const ContactPage = () => {
   return (
     <section className="page-section contact-info">
       <h2 className="section-title">Contact</h2>
-      <p>Email: wizardsway@example.com</p>
-      <p>Follow us on Facebook & Instagram!</p>
+      <p>Email: WizardsWayBoonsboro@gmail.com</p>
+      <p>Follow us on <a href="https://www.facebook.com/profile.php?id=100088512242872">Facebook</a> & <a href="https://www.instagram.com/wizardswayboonsboromd">Instagram</a>!</p>
     </section>
   );
 }

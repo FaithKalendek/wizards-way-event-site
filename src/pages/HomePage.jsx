@@ -20,7 +20,8 @@ const HomePage = () => {
         <p>Friday, November 7 — 6:00 PM to 9:00 PM</p>
         <p>Saturday, November 8 — 1:00 PM to 4:00 PM (Yule Ball 6:00 PM to 9:00 PM)</p>
         <p>Sunday, November 9 — 1:00 PM to 6:00 PM</p>
-        <p className="muted">No admission charge. Suggested donation: $10 per person / $20 per family to benefit our partner charities.</p>
+        <p className="muted">No admission charge. Please bring items to donate to our sponsored charities. Needed items listed in the "what to bring" section of the FAQ page and also on our Facebook group.</p>
+        <p className="muted">The Yule Ball is a separate event which is also free, but a suggested donation of $10 per person / $20 per family is appreciated.</p>
       </section>
     </>
   );

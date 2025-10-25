@@ -9,6 +9,7 @@ import FAQPage from "./pages/FAQPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import StyleTest from "./pages/StyleTest.jsx";
+import ScavengerHuntPage from "./pages/ScavengerHuntPage.jsx";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
     { path: "/faq", element: <FAQPage /> },
     { path: "/about", element: <AboutPage /> },
     { path: "/contact", element: <ContactPage /> },
-    { path: "/styletest", element: <StyleTest /> }
+    { path: "/styletest", element: <StyleTest /> },
+    { path: "/scavengerhunt/:stepId", element: <ScavengerHuntPage /> }
   ]);
 
   return (
