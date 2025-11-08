@@ -1,1 +1,78 @@
 /* ScavengerHuntPage.css -- styles for Scavenger Hunt Page components */
+
+.scavenger-hunt-page {
+	padding: 1rem;
+}
+
+.sh-step {
+	max-width: 900px;
+	margin: 0 auto 2rem;
+	padding: 0 1rem;
+}
+
+/* Media sizing: ensure videos/images/audio never exceed the viewport width */
+
+.sh-step img.sh-image,
+.sh-step video.sh-media {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-top: 1rem;
+}
+
+/* Make audio controls expand to available width on small screens */
+.sh-step audio.sh-media {
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	margin-top: 1rem;
+}
+
+.sh-step video.sh-media {
+	max-height: 60vh;
+}
+
+.form-confirm {
+	border: 1px solid rgba(0,0,0,0.08);
+	padding: 1rem;
+	border-radius: 6px;
+	background: rgba(255,255,255,0.02);
+	margin-top: 1rem;
+}
+
+.form-confirm label {
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.form-confirm input[type="text"],
+.form-confirm input[type="email"],
+.form-confirm input[type="tel"] {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.5rem;
+	margin-top: 0.25rem;
+	margin-bottom: 0.5rem;
+}
+
+.sh-timer-bar {
+	background: rgba(0,0,0,0.02);
+	padding: 0.5rem 1rem;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.sh-timer-value {
+	font-weight: 600;
+}
+
+.hint {
+	margin-top: 0.5rem;
+	color: var(--muted, #666);
+}
+
+.success { color: var(--success, #117a00); }
+.error { color: var(--danger, #9b1c1c); }
+

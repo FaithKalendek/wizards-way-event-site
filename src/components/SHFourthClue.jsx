@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import musicClueImg from "../assets/MusicClue.png";
 
 
-const SHFourthClue = ({ currentTime, setCurrentTime }) => {
+const SHFourthClue = () => {
 
 	const [showHint, setShowHint] = useState(false);
 
@@ -10,8 +11,8 @@ const SHFourthClue = ({ currentTime, setCurrentTime }) => {
 	return (
 		<section className="sh-step sh-fourth-clue">
 			<h2>Clue: 4</h2>
-			<p>Follow the highlighted notes to spell the next keyword and find the QR code.</p>
-			{showHint && <p>Hint: Think about the Hogwarts Express!</p>}
+			<img className="sh-image" src={musicClueImg} alt="Music clue" />
+			{showHint && <p>Hint: Where would you find this item?</p>}
 			<button onClick={() => setShowHint(!showHint)}>
 				{showHint ? "Hide Hint" : "Show Hint"}
 			</button>

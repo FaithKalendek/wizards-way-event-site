@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./ScavengerHuntPage.css"
 // Import components for each scavenger hunt step/clue
-import SHWelcome from "../components/SHWelcome.jsx"; // Info form for certificate and start timer
+import SHWelcome from "../components/SHWelcome.jsx"; // Info form for certificate and start timer --> redirect to clue 1
 import SHFirstClue from "../components/SHFirstClue.jsx"; // Dragons --> dragon area
 import SHSecondClue from "../components/SHSecondClue.jsx"; // Myrtle --> redirect to next clue
 import SHThirdClue from "../components/SHThirdClue.jsx"; // Egg --> Lake
@@ -32,6 +32,16 @@ const ScavengerHuntPage = () => {
             setCurrentTime(elapsed);
             setHuntStarted(true);
         }
+        // Restore userInfo if available (so direct visits to /scavengerhunt/7 still show info)
+        try {
+            const raw = sessionStorage.getItem('huntUserInfo');
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                setUserInfo(parsed);
+            }
+        } catch (e) {
+            // ignore JSON errors
+        }
     }, []);
 
     // Central timer: run only in parent so it persists across child changes
@@ -47,7 +57,11 @@ const ScavengerHuntPage = () => {
     const startHunt = (info = {}) => {
         const now = Date.now();
         sessionStorage.setItem('huntStart', String(now));
-        setUserInfo(prev => ({ ...prev, ...info }));
+        const newInfo = { ...userInfo, ...info };
+        setUserInfo(newInfo);
+        try {
+            sessionStorage.setItem('huntUserInfo', JSON.stringify(newInfo));
+        } catch (e) { }
         setCurrentTime(0);
         setHuntStarted(true);
     };

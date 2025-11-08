@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-const SHFirstClue = ({ currentTime, setCurrentTime }) => {
+const SHFirstClue = () => {
 
 	const [showHint, setShowHint] = useState(false);
 

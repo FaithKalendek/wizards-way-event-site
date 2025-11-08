@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Welcome message, take user's info in form, start timer and display "and you're off!" message when submit button clicked
 const SHWelcome = ({ setUserInfo, setCurrentTime, startHunt }) => {
@@ -10,6 +11,8 @@ const SHWelcome = ({ setUserInfo, setCurrentTime, startHunt }) => {
 
 	const [showInProgress, setShowInProgress] = useState(false);
 
+	const navigate = useNavigate();
+
 	// Function to handle form submission -- call parent startHunt, update userInfo state
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -17,6 +20,9 @@ const SHWelcome = ({ setUserInfo, setCurrentTime, startHunt }) => {
 		setUserInfo(info);
 		if (typeof startHunt === 'function') startHunt(info);
 		setShowInProgress(true);
+		setTimeout(() => {
+			navigate("/scavengerhunt/1"); // Navigate to first clue after 2 seconds
+		}, 2000);
 	};
 
 	return (

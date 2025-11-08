@@ -68,6 +68,7 @@ function App() {
           <a href="/">Home</a>
           <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
+          <a href="/scavengerhunt/0">Scavenger Hunt</a>
           <a href="/gallery">Gallery</a>
           <a href="/faq">FAQ</a>
           <a href="/charities">Charities</a>
