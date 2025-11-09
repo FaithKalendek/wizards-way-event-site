@@ -55,6 +55,25 @@
 	margin-bottom: 0.5rem;
 }
 
+/* Layout for welcome page form rows so each field sits on its own line */
+.sh-welcome .form-row {
+	margin-bottom: 0.75rem;
+}
+.sh-welcome .form-row label {
+	display: block;
+}
+.sh-welcome .form-row input[type="text"],
+.sh-welcome .form-row input[type="email"],
+.sh-welcome .form-row input[type="tel"] {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.5rem;
+	margin-top: 0.25rem;
+}
+.sh-welcome .form-row input[type="checkbox"] {
+	margin-right: 0.5rem;
+}
+
 .sh-timer-bar {
 	background: rgba(0,0,0,0.02);
 	padding: 0.5rem 1rem;

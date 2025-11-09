@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Welcome message, take user's info in form, start timer and display "and you're off!" message when submit button clicked
-const SHWelcome = ({ setUserInfo, setCurrentTime, startHunt }) => {
+const SHWelcome = ({ setUserInfo, startHunt }) => {
 	
 	const [email, setEmail] = useState("");
 	const [name, setName] = useState("");
@@ -30,22 +30,30 @@ const SHWelcome = ({ setUserInfo, setCurrentTime, startHunt }) => {
 			<h2>Welcome to the Scavenger Hunt!</h2>
 			<p>Please enter your information below to get started:</p>
 			<form onSubmit={handleSubmit}>
-				<label>
-					Name:
-					<input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-				</label>
-				<label>
-					Email:
-					<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-				</label>
-				<label>
-					Phone Number:
-					<input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
-				</label>
-				<input type="checkbox" checked={canPutInDrawing} onChange={(e) => setCanPutInDrawing(e.target.checked)} />
-				<label>
-					I agree to have my contact info entered into a drawing for a prize.
-				</label>
+				<div className="form-row">
+					<label>
+						Name:
+						<input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+					</label>
+				</div>
+				<div className="form-row">
+					<label>
+						Email:
+						<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+					</label>
+				</div>
+				<div className="form-row">
+					<label>
+						Phone Number:
+						<input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+					</label>
+				</div>
+				<div className="form-row">
+					<label>
+						<input type="checkbox" checked={canPutInDrawing} onChange={(e) => setCanPutInDrawing(e.target.checked)} />
+						I agree to have my contact info entered into a drawing for a prize.
+					</label>
+				</div>
 				<button type="submit">Start Scavenger Hunt</button>
 			</form>
 			{showInProgress && <p>Scavenger Hunt in progress! Good luck!</p>}
