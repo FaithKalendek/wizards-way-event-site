@@ -57,16 +57,35 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
     // Freeze finish time: capture the first available currentTime (or timeTaken) and keep it.
     const [finalTimeCaptured, setFinalTimeCaptured] = useState(null);
     useEffect(() => {
-        if (finalTimeCaptured === null) {
-            if (typeof currentTime === 'number') {
-                setFinalTimeCaptured(currentTime);
-                try { setTimeTaken(currentTime); } catch (e) { }
-            } else if (typeof timeTaken === 'number') {
-                setFinalTimeCaptured(timeTaken);
-                try { setTimeTaken(timeTaken); } catch (e) { }
-            }
+        if (finalTimeCaptured !== null) {
+            if (sessionStorage.getItem('huntFormSubmitted')) setSubmitted(true);
+            return;
         }
-        if (sessionStorage.getItem('huntFormSubmitted')) setSubmitted(true);
+
+        // Prefer an authoritative elapsed time if huntStart exists in sessionStorage.
+        const start = sessionStorage.getItem('huntStart');
+        if (start) {
+            const elapsed = Math.floor((Date.now() - Number(start)) / 1000);
+            setFinalTimeCaptured(elapsed);
+            try { setTimeTaken(elapsed); } catch (e) { }
+            if (sessionStorage.getItem('huntFormSubmitted')) setSubmitted(true);
+            return;
+        }
+
+        // No huntStart available yet; fall back to parent's values if they are positive.
+        if (typeof currentTime === 'number' && currentTime > 0) {
+            setFinalTimeCaptured(currentTime);
+            try { setTimeTaken(currentTime); } catch (e) { }
+            return;
+        }
+
+        if (typeof timeTaken === 'number' && timeTaken > 0) {
+            setFinalTimeCaptured(timeTaken);
+            try { setTimeTaken(timeTaken); } catch (e) { }
+            return;
+        }
+
+        // otherwise leave as null until something meaningful appears
     }, [currentTime, timeTaken, setTimeTaken, finalTimeCaptured]);
 
     // Keep the confirm fields in sync if userInfo changes
@@ -208,31 +227,40 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
             <p>You have completed the scavenger hunt!</p>
             <p>Your time: {Math.floor((finalTimeCaptured ?? 0) / 60).toString().padStart(2, '0')}:{((finalTimeCaptured ?? 0) % 60).toString().padStart(2, '0')}</p>
             <p>Thank you for participating!</p>
-            { effectiveUser && effectiveUser.canPutInDrawing && 
-                <p>You have been entered into the prize drawing!</p> 
+            { effectiveUser && effectiveUser.canPutInDrawing && submitted &&
+                <p>You have been entered into the prize drawing!</p>
             }
 
             { submitting && <p>Saving your result&hellip;</p> }
-            { submitted && submitResult === 'ok' && <p className="success">Your time has been recorded. Thank you!</p> }
-            { submitted && submitResult === 'opted-out' && <p className="muted">You chose not to enter the prize drawing.</p> }
-            { submitResult === 'fallback' && submitLink && (
-                <div className="success">
-                    <p>We opened the prefilled Google Form in a new tab so you can complete submission — thank you.</p>
-                    <p><a href={submitLink} target="_blank" rel="noreferrer">Open prefilled Google Form (manual)</a></p>
-                </div>
-            )}
-            { submitResult === 'failed' && submitLink && (
-                <div className="error">
-                    <p>{submitError || 'Automatic submission failed.'}</p>
-                    <p>Please click the link below to open the prefilled form and submit manually:</p>
-                    <p><a href={submitLink} target="_blank" rel="noreferrer">Open prefilled Google Form</a></p>
-                </div>
-            )}
-            { submitError && (
-                <div className="error">
-                    <p>Could not save your result: {submitError}</p>
-                    <p>If the problem persists, please contact the event organizer.</p>
-                </div>
+
+            { /* Consolidated submission feedback: show a clear success message after submission, and concise error when not submitted */ }
+            { submitted ? (
+                submitResult === 'ok' ? (
+                    <p className="success">Your time has been recorded. Thank you!</p>
+                ) : submitResult === 'fallback' ? (
+                    <div className="success">
+                        <p>Your time has been recorded. We opened the prefilled Google Form in a new tab so you can complete submission — thank you.</p>
+                        { submitLink && <p><a href={submitLink} target="_blank" rel="noreferrer">Open prefilled Google Form (manual)</a></p> }
+                    </div>
+                ) : submitResult === 'opted-out' ? (
+                    <p className="muted">You chose not to enter the prize drawing.</p>
+                ) : submitResult === 'failed' ? (
+                    <div className="error">
+                        <p>{submitError || 'Automatic submission failed.'}</p>
+                        { submitLink ? (
+                            <p><a href={submitLink} target="_blank" rel="noreferrer">Open prefilled Google Form</a></p>
+                        ) : (
+                            <p>If the problem persists, please contact the event organizer.</p>
+                        ) }
+                    </div>
+                ) : null
+            ) : (
+                submitError && (
+                    <div className="error">
+                        <p>Could not save your result: {submitError}</p>
+                        <p>If the problem persists, please contact the event organizer.</p>
+                    </div>
+                )
             )}
 
             { /* If Apps Script is not configured and the form is configured, show a confirmation UI that lets the user verify contact info and submit to the drawing. The client will submit the form programmatically so the finish time cannot be edited. */ }
@@ -266,7 +294,16 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
                             if (confirmOptIn) {
                                 try {
                                     const prefillUrl = buildFormPrefillUrl({ ...payload, timeSeconds: formattedTime });
-                                    const ok = await submitToGoogleForm(payload);
+                                    let ok = await submitToGoogleForm(payload);
+                                    // submitToGoogleForm may return false if it times out even though the
+                                    // form POST completed (iframe load handler sets sessionStorage).
+                                    // If that session flag is present after the attempt, treat as success.
+                                    try {
+                                        if (!ok && sessionStorage.getItem('huntFormSubmitted')) {
+                                            ok = true;
+                                        }
+                                    } catch (e) {}
+
                                     if (ok) {
                                         try { sessionStorage.setItem('huntFormSubmitted', '1'); } catch (e) {}
                                         setSubmitted(true);
