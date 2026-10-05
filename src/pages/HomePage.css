@@ -2,3 +2,13 @@
 .home-hero{margin-top:1rem}
 .home-section{padding:1.5rem;text-align:center}
 .home-section h3{color:var(--gold)}
+.home-parade-note{
+  margin-top:1.5rem;
+  padding:.8rem 1rem;
+  border-top:1px solid rgba(218, 165, 32, 0.35);
+  border-bottom:1px solid rgba(218, 165, 32, 0.35);
+  color:rgba(255, 214, 102, 0.9);
+  font-size:.9rem;
+  line-height:1.7;
+  /* font-style:italic; */
+}

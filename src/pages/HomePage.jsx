@@ -1,27 +1,29 @@
 import Banner from "../components/Banner.jsx";
 import "./HomePage.css"
 
-/*Hero Section: Big banner with event name (“Wizard’s Way”), maybe background image (castle / books / candles).
-Quick Links: Buttons to “Directions” + “Explore Activities”
-About blurb: 2–3 sentences about what Wizard’s Way is, maybe a pic from last year – Aunt Nicole is going to send about info
-Call to Action: “Join us this year!”
-Small cards or icons for each charity supported (book drive + food pantry) & little blurb + link to learn more (routes to Charities page) */
-
 const HomePage = () => {
   return (
     <>
       <Banner
-        title="Wizard's Way — Year 4"
-        subtitle="November 7–9, 2025 — Free family fun (suggested donation to benefit local charities)"
+        title="Wizard's Way — Year 5"
+        subtitle="The Harry Potter House of Boonsboro MD • Family Fun Fest Charity Event 2026"
         style={{ ['--banner-image']: "url('/banner-candles.jpg')" }}
       />
       <section className="home-section">
         <h3 className="heading-sub">Event Dates & Times</h3>
-        <p>Friday, November 7 — 6:00 PM to 9:00 PM</p>
-        <p>Saturday, November 8 — 1:00 PM to 4:00 PM (Yule Ball 6:00 PM to 9:00 PM)</p>
-        <p>Sunday, November 9 — 1:00 PM to 6:00 PM</p>
-        <p className="muted">No admission charge. Please bring items to donate to our sponsored charities. Needed items listed in the "what to bring" section of the FAQ page and also on our Facebook group.</p>
-        <p className="muted">The Yule Ball is a separate event which is also free, but a suggested donation of $10 per person / $20 per family is appreciated.</p>
+        <ul>
+          <li>Sat Oct 24 — 2:00 PM to 8:00 PM</li>
+          <li>Sun Oct 25 — 2:00 PM to 8:00 PM</li>
+          <li>Sat Oct 31 — 11:00 AM to 2:00 PM</li>
+          <li>Sun Nov 1 — 2:00 PM to 8:00 PM</li>
+          <li>Sat Nov 7 — 2:00 PM to 8:00 PM</li>
+        </ul>
+
+        <p>Come join us for a magical event full of fun for the whole family! Free to enter, free goody bags for kids, free games and scavenger hunts, and plenty of chances for prizes for our grown-up wizards, witches, and muggles too! Food vendors will be on-site, and donations of goods and funds support our charity partners!</p>
+
+        <p>This year’s theme is Harry Potter and the Order of the Phoenix! We’ll meet Professor Umbridge, Tonks, Luna, Neville, and all the familiar characters from past years. There will be lots of great games and prizes, photo opportunities, and fun for all ages!</p>
+
+        <p className="home-parade-note">Don’t forget to catch us in the Alsatia Mummers Parade on Saturday evening, October 31, in downtown Hagerstown, where the Hogwarts Express will roll through the streets casting spells and spreading the word about Wizard’s Way and our charity partners!</p>
       </section>
     </>
   );

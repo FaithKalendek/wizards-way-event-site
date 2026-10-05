@@ -2,10 +2,26 @@ import "./FAQPage.css"
 
 const FAQPage = () => {
   const faqs = [
-    { q: "What should I bring?", a: "Just bring yourselves (costumes encouraged) and some items to donate to our sponsored charities! Food and drinks--some themed!--will be available from food trucks and vendors on-site. See charities page for lists of needed items." },
-    { q: "Are kids welcome?", a: "Yes — most activities are family-friendly. Surprises for younger attendees will be available." },
-    { q: "Is there parking?", a: "Yes, on-site parking is available. Event is held in a residential neighborhood; please be respectful of private property, lawns, driveways, mailboxes, etc." },
-    { q: "What's the Yule Ball?", a: "The Yule Ball is a special ticketed evening event on Saturday Nov 8 from 6–9pm with music, dancing, a costume contest, and special prizes." }
+    {
+      q: "What should I bring?",
+      a: "Bring yourselves and your family, and feel free to dress in costume or Hogwarts-inspired fashion! We welcome donations for Katie’s Cupboard and Books From Beau, as well as St. Baldrick’s fundraising support. Suggested items include food staples, cleaning supplies, personal hygiene products, feminine hygiene items, diapers, adult incontinence products, and books in any condition — especially children’s books and YA titles!"
+    },
+    {
+      q: "What is this year’s theme?",
+      a: "This year’s theme is Harry Potter and the Order of the Phoenix! Expect familiar faces from past years, special character appearances, games, scavenger hunts, photo opportunities, and plenty of fun for all ages!"
+    },
+    {
+      q: "Are kids welcome?",
+      a: "Absolutely! Wizard’s Way is designed as a family-friendly event with free goody bags for kids, scavenger hunts, games, and lots of magical fun for all ages!"
+    },
+    {
+      q: "When and where is the event?",
+      a: "The event runs on Sat Oct 24 from 2:00 PM to 8:00 PM, Sun Oct 25 from 2:00 PM to 8:00 PM, Sat Oct 31 from 11:00 AM to 2:00 PM, Sun Nov 1 from 2:00 PM to 8:00 PM, and Sat Nov 7 from 2:00 PM to 8:00 PM! We’re based in Boonsboro, Maryland, and the Hogwarts Express will also be part of the Alsatia Mummers Parade in downtown Hagerstown on Saturday evening, October 31!"
+    },
+    {
+      q: "How can I get involved?",
+      a: "You can volunteer, become part of the cast, help with event setup, serve as a food vendor, or sponsor the event! You can also donate directly to our charities or text 301-302-3152 for more information."
+    }
   ]
 
   return (
