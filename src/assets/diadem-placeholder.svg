@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">Diadem artifact placeholder</title>
+  <desc id="desc">A jewel crown placeholder for the diadem clue reveal.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1b1f2a"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="1">
+      <stop offset="0%" stop-color="#d7d5e8"/>
+      <stop offset="50%" stop-color="#8d89a7"/>
+      <stop offset="100%" stop-color="#d7d5e8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="420" fill="url(#bg)"/>
+  <path d="M130 270 L200 150 L260 215 L300 120 L340 215 L400 150 L470 270 Z" fill="url(#metal)" stroke="#efeefa" stroke-width="6"/>
+  <circle cx="300" cy="205" r="48" fill="#c8f5ff" stroke="#8de7ff" stroke-width="12"/>
+  <circle cx="300" cy="205" r="20" fill="#6dcce9"/>
+  <path d="M180 305 L420 305" stroke="#d6d8dc" stroke-width="8" stroke-linecap="round"/>
+  <text x="300" y="382" text-anchor="middle" font-family="Verdana, sans-serif" font-size="24" fill="#edf4fb">DIADEM PLACEHOLDER</text>
+</svg>

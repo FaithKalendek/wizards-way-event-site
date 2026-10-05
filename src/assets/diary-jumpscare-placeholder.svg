@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+  <title id="title">Diary jumpscare placeholder</title>
+  <desc id="desc">A simple placeholder image with glowing eyes and a dark background.</desc>
+  <rect width="600" height="420" fill="#090b10"/>
+  <circle cx="220" cy="180" r="52" fill="#f4d76a"/>
+  <circle cx="380" cy="180" r="52" fill="#f4d76a"/>
+  <circle cx="220" cy="180" r="18" fill="#090909"/>
+  <circle cx="380" cy="180" r="18" fill="#090909"/>
+  <path d="M70 300 Q300 360 530 300" stroke="#7d0d0d" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <text x="300" y="385" text-anchor="middle" font-family="Verdana, sans-serif" font-size="28" fill="#f5f1e6">JUMPSCARE PLACEHOLDER</text>
+</svg>

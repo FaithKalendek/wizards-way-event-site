@@ -10,7 +10,105 @@
 	padding: 0 1rem;
 }
 
-/* Media sizing: ensure videos/images/audio never exceed the viewport width */
+.sh-signup-intro {
+	display: flex;
+	justify-content: center;
+	margin: 1.5rem 0;
+}
+
+.sh-coin-card {
+	position: relative;
+	width: min(260px, 70vw);
+	height: 180px;
+	perspective: 1000px;
+	cursor: pointer;
+}
+
+.sh-coin-card.flipped .sh-coin-face {
+	transform: rotateY(180deg);
+}
+
+.sh-coin-face {
+	position: absolute;
+	inset: 0;
+	backface-visibility: hidden;
+	transition: transform 0.7s ease;
+	border-radius: 18px;
+	border: 2px solid rgba(0,0,0,0.12);
+	background: linear-gradient(135deg, #f0d37c, #c89d29);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.sh-coin-back {
+	transform: rotateY(180deg);
+	background: #171b25;
+	color: #f9f9f9;
+}
+
+.sh-coin-art {
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.sh-intro-video-placeholder {
+	padding: 1rem;
+	text-align: center;
+	font-weight: 600;
+}
+
+.sh-signup-form,
+.sh-code-form {
+	margin-top: 1.25rem;
+}
+
+.sh-code-form {
+	padding-top: 1rem;
+	border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.sh-code-label {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+}
+
+.sh-code-form input,
+.sh-signup-form input,
+.sh-signup-form select {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.7rem 0.8rem;
+	margin-top: 0.3rem;
+	margin-bottom: 0.8rem;
+	border-radius: 8px;
+	border: 1px solid rgba(0,0,0,0.12);
+}
+
+.checkbox-row {
+	margin-top: 1rem;
+}
+
+.checkbox-row label {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+}
+
+.checkbox-row input {
+	width: auto;
+	margin-top: 0.35rem;
+}
+
+.sh-inline-link {
+	display: inline-block;
+	margin-top: 1rem;
+	font-weight: 600;
+}
 
 .sh-step img.sh-image,
 .sh-step video.sh-media {
@@ -20,12 +118,34 @@
 	margin-top: 1rem;
 }
 
-/* Make audio controls expand to available width on small screens */
 .sh-step audio.sh-media {
 	width: 100%;
 	max-width: 100%;
 	display: block;
 	margin-top: 1rem;
+}
+
+.sh-scare-popup {
+	position: relative;
+	margin-top: 1.25rem;
+	padding: 1rem;
+	border-radius: 18px;
+	background: rgba(10, 10, 12, 0.96);
+	box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+	overflow: hidden;
+}
+
+.sh-scare-image {
+	display: block;
+	width: min(100%, 480px);
+	margin: 0 auto 1rem;
+	border-radius: 12px;
+	border: 2px solid rgba(255,255,255,0.15);
+	background: #111;
+}
+
+.sh-scare-audio {
+	display: none;
 }
 
 .sh-step video.sh-media {
@@ -55,7 +175,6 @@
 	margin-bottom: 0.5rem;
 }
 
-/* Layout for welcome page form rows so each field sits on its own line */
 .sh-welcome .form-row {
 	margin-bottom: 0.75rem;
 }
@@ -87,9 +206,218 @@
 	font-weight: 600;
 }
 
+.sh-action-button,
+.sh-secondary-button,
+.sh-choice-button {
+	appearance: none;
+	border: 1px solid rgba(0,0,0,0.14);
+	border-radius: 999px;
+	padding: 0.7rem 1.1rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sh-action-button,
+.sh-choice-button {
+	background: linear-gradient(135deg, #f3d377, #d8a92b);
+	color: #1a1712;
+}
+
+.sh-secondary-button {
+	background: transparent;
+	margin-top: 0.75rem;
+}
+
+.sh-action-button:hover,
+.sh-secondary-button:hover,
+.sh-choice-button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.sh-sequence-controls,
+.sh-choice-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 0.75rem;
+	margin: 1rem 0;
+}
+
+.sh-sequence-readout {
+	margin-top: 0.5rem;
+	font-weight: 600;
+}
+
+.sh-ring-reveal {
+	margin-top: 1.5rem;
+	padding: 1rem;
+	border-radius: 18px;
+	background: rgba(18, 22, 30, 0.9);
+	border: 1px solid rgba(188, 205, 255, 0.18);
+}
+
+.sh-chamber {
+	position: relative;
+	overflow: hidden;
+	border-radius: 14px;
+	background: linear-gradient(180deg, #0d1520 0%, #1a2430 100%);
+	border: 2px solid rgba(255,255,255,0.08);
+	min-height: 260px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sh-chamber-panel {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 52%;
+	background: linear-gradient(90deg, rgba(82, 94, 112, 0.96), rgba(180, 191, 214, 0.8));
+	box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08);
+	z-index: 2;
+	animation: chamber-slide 1.8s ease forwards;
+}
+
+.sh-chamber-panel-left {
+	left: 0;
+	transform-origin: left center;
+	border-right: 2px solid rgba(0,0,0,0.2);
+}
+
+.sh-chamber-panel-right {
+	right: 0;
+	transform-origin: right center;
+	border-left: 2px solid rgba(0,0,0,0.2);
+}
+
+.sh-ring-image {
+	position: relative;
+	z-index: 1;
+	display: block;
+	width: min(100%, 350px);
+	max-height: 240px;
+	object-fit: contain;
+	opacity: 0;
+	animation: ring-appear 0.8s ease 1.2s forwards;
+}
+
+.sh-ring-copy {
+	margin-top: 1rem;
+	line-height: 1.7;
+}
+
+@keyframes chamber-slide {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(-115%); }
+}
+
+.sh-chamber-panel-right {
+	animation-name: chamber-slide-right;
+}
+
+@keyframes chamber-slide-right {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(115%); }
+}
+
+@keyframes ring-appear {
+	0% { opacity: 0; transform: scale(0.86) translateY(12px); }
+	100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.sh-clue-page blockquote {
+	margin: 1rem 0;
+	padding: 1rem 1.25rem;
+	border-left: 4px solid #c79a18;
+	background: rgba(199, 154, 24, 0.08);
+	font-style: italic;
+}
+
+.sh-clue-page input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0.7rem 0.8rem;
+	margin: 0.8rem 0 0.6rem;
+	border-radius: 8px;
+	border: 1px solid rgba(0,0,0,0.12);
+}
+
 .hint {
 	margin-top: 0.5rem;
 	color: var(--muted, #666);
+}
+
+.sh-diadem-reveal {
+	margin-top: 1.25rem;
+	padding: 1rem;
+	border-radius: 18px;
+	background: rgba(18, 22, 30, 0.9);
+	border: 1px solid rgba(188, 205, 255, 0.18);
+}
+
+.sh-diadem-image {
+	display: block;
+	width: min(100%, 420px);
+	margin: 0 auto 1rem;
+	border-radius: 12px;
+	background: #0d1117;
+}
+
+.sh-locket-game {
+	display: grid;
+	grid-template-columns: 1fr 1.2fr;
+	gap: 1rem;
+	margin-top: 1.25rem;
+}
+
+.sh-locket-pool,
+.sh-locket-slots {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.sh-locket-pool {
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.sh-locket-card,
+.sh-locket-slot {
+	border-radius: 12px;
+	border: 1px solid rgba(0,0,0,0.12);
+	background: rgba(255,255,255,0.04);
+	padding: 0.85rem 0.9rem;
+	font-weight: 600;
+}
+
+.sh-locket-card {
+	cursor: grab;
+	background: linear-gradient(135deg, rgba(241, 203, 99, 0.22), rgba(158, 120, 24, 0.12));
+	text-align: center;
+}
+
+.sh-locket-card:active {
+	cursor: grabbing;
+}
+
+.sh-locket-slot {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	min-height: 90px;
+}
+
+.sh-locket-founder {
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	opacity: 0.8;
+}
+
+.sh-locket-slot-value {
+	min-height: 1.25rem;
+	color: #d9d9d9;
 }
 
 .success { color: var(--success, #117a00); }

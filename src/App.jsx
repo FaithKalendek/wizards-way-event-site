@@ -1,5 +1,5 @@
-import { useRoutes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useRoutes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import DirectionsPage from "./pages/DirectionsPage.jsx";
 import ActivitiesPage from "./pages/ActivitiesPage.jsx";
@@ -14,6 +14,11 @@ import ScavengerHuntPage from "./pages/ScavengerHuntPage.jsx";
 function App() {
 
   const [navOpen, setNavOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   let element = useRoutes([
     { path: "/", element: <HomePage /> },
@@ -25,7 +30,8 @@ function App() {
     { path: "/about", element: <AboutPage /> },
     { path: "/contact", element: <ContactPage /> },
     { path: "/styletest", element: <StyleTest /> },
-    { path: "/scavengerhunt/:stepId", element: <ScavengerHuntPage /> }
+    { path: "/scavengerhunt", element: <ScavengerHuntPage /> },
+    { path: "/scavengerhunt/:clueSlug", element: <ScavengerHuntPage /> }
   ]);
 
   return (
@@ -68,7 +74,7 @@ function App() {
           <a href="/">Home</a>
           <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
-          <a href="/scavengerhunt/0">Scavenger Hunt</a>
+          <a href="/scavengerhunt/welcome">Scavenger Hunt</a>
           <a href="/gallery">Gallery</a>
           <a href="/faq">FAQ</a>
           <a href="/charities">Charities</a>

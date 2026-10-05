@@ -228,7 +228,7 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
             <p>Your time: {Math.floor((finalTimeCaptured ?? 0) / 60).toString().padStart(2, '0')}:{((finalTimeCaptured ?? 0) % 60).toString().padStart(2, '0')}</p>
             <p>Thank you for participating!</p>
             { effectiveUser && effectiveUser.canPutInDrawing && submitted &&
-                <p>You have been entered into the prize drawing!</p>
+                <p>You have been entered into the prize raffle!</p>
             }
 
             { submitting && <p>Saving your result&hellip;</p> }
@@ -243,7 +243,7 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
                         { submitLink && <p><a href={submitLink} target="_blank" rel="noreferrer">Open prefilled Google Form (manual)</a></p> }
                     </div>
                 ) : submitResult === 'opted-out' ? (
-                    <p className="muted">You chose not to enter the prize drawing.</p>
+                    <p className="muted">You chose not to enter the prize raffle.</p>
                 ) : submitResult === 'failed' ? (
                     <div className="error">
                         <p>{submitError || 'Automatic submission failed.'}</p>
@@ -263,14 +263,14 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
                 )
             )}
 
-            { /* If Apps Script is not configured and the form is configured, show a confirmation UI that lets the user verify contact info and submit to the drawing. The client will submit the form programmatically so the finish time cannot be edited. */ }
+            { /* If Apps Script is not configured and the form is configured, show a confirmation UI that lets the user verify contact info and submit to the prize raffle. The client will submit the form programmatically so the finish time cannot be edited. */ }
             { GOOGLE_FORM_PREFILL.base && !sessionStorage.getItem('huntFormSubmitted') && !submitting && !submitted && (
                 <div className="form-confirm">
                     {!showConfirm ? (
                         <>
-                            <p>To enter the drawing, please confirm or enter your contact info below.</p>
-                            <button onClick={() => setShowConfirm(true)}>Confirm info to enter drawing</button>
-                            <p className="muted">If you didn't opt in earlier you can still choose to join the drawing here.</p>
+                            <p>To enter the prize raffle, please confirm or enter your contact info below.</p>
+                            <button onClick={() => setShowConfirm(true)}>Confirm info to enter raffle</button>
+                            <p className="muted">If you didn't opt in earlier you can still choose to join the prize raffle here.</p>
                         </>
                     ) : (
                         <form onSubmit={async (e) => {
@@ -336,7 +336,7 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
                                     setSubmitResult('failed');
                                 }
                             } else {
-                                // User explicitly chose not to enter the drawing
+                                // User explicitly chose not to enter the prize raffle
                                 try { sessionStorage.setItem('huntFormSubmitted', '1'); } catch (e) {}
                                 setSubmitted(true);
                                 setSubmitResult('opted-out');
@@ -358,7 +358,7 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
                             </label>
                             <label>
                                 <input type="checkbox" checked={confirmOptIn} onChange={(e) => setConfirmOptIn(e.target.checked)} />
-                                I agree to have my contact info entered into a drawing for a prize.
+                                I agree to have my contact info entered into the prize raffle.
                             </label>
                             <p className="muted">Finish time will be recorded automatically and is not editable.</p>
                             <button type="submit">Submit</button>
