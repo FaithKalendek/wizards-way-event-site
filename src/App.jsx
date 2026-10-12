@@ -8,6 +8,7 @@ import GalleryPage from "./pages/GalleryPage.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
+import RulesPage from "./pages/RulesPage.jsx";
 import StyleTest from "./pages/StyleTest.jsx";
 import ScavengerHuntPage from "./pages/ScavengerHuntPage.jsx";
 
@@ -27,6 +28,7 @@ function App() {
     { path: "/charities", element: <CharitiesPage /> },
     { path: "/gallery", element: <GalleryPage /> },
     { path: "/faq", element: <FAQPage /> },
+    { path: "/rules", element: <RulesPage /> },
     { path: "/about", element: <AboutPage /> },
     { path: "/contact", element: <ContactPage /> },
     { path: "/styletest", element: <StyleTest /> },
@@ -73,9 +75,9 @@ function App() {
         >
           <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
-          <a href="/scavengerhunt/welcome">Scavenger Hunt</a>
-          <a href="/gallery">Gallery</a>
           <a href="/faq">FAQ</a>
+          <a href="/rules">Rules</a>
+          <a href="/gallery">Gallery</a>
           <a href="/charities">Charities</a>
           <a href="/about">About</a>
           <a href="/contact">Contact</a>
@@ -88,7 +90,8 @@ function App() {
         <span className="footer-links">
           <a href="/contact">Contact</a>|
           <a href="/charities">Charities</a>|
-          <a href="/faq">FAQ</a>
+          <a href="/faq">FAQ</a>|
+          <a href="/rules">Rules</a>
         </span>
         <span className="footer-disclaimer">
           This is a fan-created event site for charitable purposes. Not affiliated with Warner Bros. or J.K. Rowling.

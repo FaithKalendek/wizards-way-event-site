@@ -1,5 +1,8 @@
 /* Activity Card styles matching StyleTest design */
 .card-border {
+	width: 100%;
+	max-width: 32rem;
+	box-sizing: border-box;
 	background-color: var(--navy);
 	border: 2px solid var(--slate);
 	border-radius: 0.75rem;

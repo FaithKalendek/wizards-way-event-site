@@ -100,9 +100,34 @@ h1,h2,h3{color:var(--muted); margin:0}
 .btn-secondary:hover{background:#495a6b}
 
 /* Cards */
-.card-grid{display:flex;gap:1rem;margin-top:1rem}
-.card-border{flex:1;background-color:var(--navy);border:2px solid var(--slate);border-radius:.75rem;padding:1.5rem;color:var(--muted)}
+.card-grid{
+  --cards-per-row: 4;
+  display:grid !important;
+  grid-template-columns:repeat(var(--cards-per-row), minmax(0, 1fr)) !important;
+  gap:1rem;
+  margin:1rem auto 0;
+  width:100%;
+  max-width:68rem;
+  align-items:stretch;
+}
+.card-border{
+  min-width:0;
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  background-color:var(--navy);
+  border:2px solid var(--slate);
+  border-radius:.75rem;
+  padding:1.5rem;
+  color:var(--muted);
+  display:flex;
+  flex-direction:column;
+}
 .card-title{font-size:1.25rem;font-weight:600;color:var(--gold);margin-bottom:.5rem}
+
+@media (max-width: 700px){
+  .card-grid{--cards-per-row: 1 !important}
+}
 
 /* Maroon border utility */
 .maroon-border{display:none}
@@ -139,7 +164,7 @@ h1,h2,h3{color:var(--muted); margin:0}
   .NavBar .container{padding:.6rem 1rem}
 
   /* stack card grid into a single column for narrow screens */
-  .card-grid{flex-direction:column}
+  .card-grid{display:grid !important;grid-template-columns:1fr !important;flex-direction:initial}
 
   /* buttons larger and full-width for easier tapping */
   .btn-primary,.btn-secondary{width:100%;padding:.85rem 1rem;border-radius:.5rem}
