@@ -73,6 +73,7 @@ function App() {
             if (e.target && e.target.tagName === 'A' && navOpen) setNavOpen(false);
           }}
         >
+          <a href="/" className="mobile-home-link">Home</a>
           <a href="/directions">Directions</a>
           <a href="/activities">Activities</a>
           <a href="/faq">FAQ</a>
