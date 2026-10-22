@@ -1,5 +1,5 @@
 import { useState } from "react";
-import diademImage from "../assets/diadem-placeholder.svg";
+import diademImage from "../assets/diadem.jpg";
 
 const SHDiademClue = () => {
     const [answer, setAnswer] = useState("");

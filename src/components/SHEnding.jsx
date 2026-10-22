@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import finalVictoryVideo from "../assets/final victory.mp4";
 
 // Capture finish time and submit participant info to a Google Form
 // Google Form prefill: put your form's prefilled URL in `base` and map entry IDs in `fields`.
@@ -42,6 +43,13 @@ const buildFormPrefillUrl = (payload) => {
 };
 
 const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
+    const formatElapsedTime = (secs) => {
+        const total = Number.isFinite(secs) ? Math.max(0, secs) : 0;
+        const h = Math.floor(total / 3600);
+        const m = Math.floor((total % 3600) / 60).toString().padStart(2, '0');
+        const s = (total % 60).toString().padStart(2, '0');
+        return `${h.toString().padStart(2, '0')}:${m}:${s}`;
+    };
 
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -224,8 +232,9 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
         <section className="sh-step sh-ending">
             { /* Display certificate with user's name and time taken */ }
             <h2>Congratulations, {(effectiveUser && effectiveUser.name) || 'Player'}!</h2>
+            <video className="sh-media" src={finalVictoryVideo} autoPlay loop muted playsInline controls />
             <p>You have completed the scavenger hunt!</p>
-            <p>Your time: {Math.floor((finalTimeCaptured ?? 0) / 60).toString().padStart(2, '0')}:{((finalTimeCaptured ?? 0) % 60).toString().padStart(2, '0')}</p>
+            <p>Your time: {formatElapsedTime(finalTimeCaptured ?? 0)}</p>
             <p>Thank you for participating!</p>
             { effectiveUser && effectiveUser.canPutInDrawing && submitted &&
                 <p>You have been entered into the prize raffle!</p>
@@ -283,7 +292,7 @@ const SHEnding = ({ userInfo, currentTime, setTimeTaken, timeTaken }) => {
                             setShowConfirm(false);
 
                             const finalTime = (typeof finalTimeCaptured === 'number') ? finalTimeCaptured : ((typeof currentTime === 'number') ? currentTime : 0);
-                            const formattedTime = `${Math.floor(finalTime/60).toString().padStart(2,'0')}:${(finalTime%60).toString().padStart(2,'0')}`;
+                            const formattedTime = formatElapsedTime(finalTime);
                             const payload = {
                                 name: confirmName,
                                 email: confirmEmail,

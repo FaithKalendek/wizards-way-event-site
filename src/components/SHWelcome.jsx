@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import introVideo from "../assets/opening vid v1.mp4";
 
 const SHWelcome = ({ setUserInfo, startHunt }) => {
 	const [email, setEmail] = useState("");
@@ -12,8 +13,18 @@ const SHWelcome = ({ setUserInfo, startHunt }) => {
 	const [codeMessage, setCodeMessage] = useState("");
 	const [isFlipped, setIsFlipped] = useState(false);
 	const [showInProgress, setShowInProgress] = useState(false);
+	const introVideoRef = useRef(null);
 
 	const navigate = useNavigate();
+
+	const handleCoinFlip = () => {
+		setIsFlipped(true);
+		const video = introVideoRef.current;
+		if (!video) return;
+		video.muted = false;
+		video.currentTime = 0;
+		video.play().catch(() => {});
+	};
 
 	const handleSignupSubmit = (e) => {
 		e.preventDefault();
@@ -50,14 +61,12 @@ const SHWelcome = ({ setUserInfo, startHunt }) => {
 	return (
 		<section className="sh-step sh-welcome">
 			<div className="sh-signup-intro">
-				<div className={`sh-coin-card ${isFlipped ? "flipped" : ""}`} onClick={() => setIsFlipped(!isFlipped)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsFlipped(!isFlipped); } }}>
+				<div className={`sh-coin-card ${isFlipped ? "flipped" : ""}`} onClick={isFlipped ? undefined : handleCoinFlip} role="button" tabIndex={isFlipped ? -1 : 0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isFlipped) handleCoinFlip(); } }}>
 					<div className="sh-coin-face sh-coin-front">
 						<div className="sh-coin-art">Coin</div>
 					</div>
 					<div className="sh-coin-face sh-coin-back">
-						<div className="sh-intro-video-placeholder">
-							<p>Intro video goes here</p>
-						</div>
+						<video ref={introVideoRef} className="sh-media sh-intro-video" src={introVideo} controls playsInline preload="auto" />
 					</div>
 				</div>
 			</div>
