@@ -31,7 +31,7 @@ const GalleryPage = () => {
     <section className="page-section gallery-page">
       <h2 className="section-title">Gallery</h2>
       <p>Every witch, wizard, and muggle brings a little enchantment to Wizard’s Way!</p>
-      <p>Tag your Instagram posts with #WizardsWay to see your memories appear in our gallery.</p>
+      <p>Tag your Instagram posts with #WizardsWayBoonsboro to see your memories appear in our gallery.</p>
       {/* Curator feed container (Curator will populate this element) */}
       <div id="curator-feed-default-feed-layout" ref={feedRef} style={{ marginTop: '3rem' }}>
         <a href="https://curator.io" target="_blank" rel="noopener noreferrer">Powered by Curator.io</a>
