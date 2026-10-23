@@ -1,9 +1,10 @@
-import { useState } from "react";
+import naginiImage from "../assets/nagini.png";
 
 const SHNaginiClue = () => {
 
     return (
         <section className="sh-step sh-clue-page">
+            <img className="sh-image" src={naginiImage} alt="Nagini clue" />
             <p className="sh-italic-text">“I dream of sinking my fangs into him. I dream of bringing him to my master. He tells me I must find the boy before the school year ends.</p>
             <p className="sh-italic-text">Eight times I have followed his scent through the castle and I have found nothing.</p>
             <p className="sh-italic-text">He disappears into that room.</p>

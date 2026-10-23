@@ -1,5 +1,8 @@
+import harryImage from "../assets/harry.png";
+
 const SHHarryClue = () => (
     <section className="sh-step sh-clue-page">
+        <img className="sh-image" src={harryImage} alt="Harry clue" />
         <p className="sh-italic-text"><strong>FINAL INTELLIGENCE RECOVERED: 0</strong></p>
         <p className="sh-italic-text">You now have all seven numbers. They must be placed in the order the Horcruxes were destroyed.</p>
         <p className="sh-italic-text">Return to the first QR code.</p>
