@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import introVideo from "../assets/opening vid v1.mp4";
+import coinImage from "../assets/coin.png";
 
 const SHWelcome = ({ setUserInfo, startHunt }) => {
 	const [email, setEmail] = useState("");
@@ -63,7 +64,7 @@ const SHWelcome = ({ setUserInfo, startHunt }) => {
 			<div className="sh-signup-intro">
 				<div className={`sh-coin-card ${isFlipped ? "flipped" : ""}`} onClick={isFlipped ? undefined : handleCoinFlip} role="button" tabIndex={isFlipped ? -1 : 0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isFlipped) handleCoinFlip(); } }}>
 					<div className="sh-coin-face sh-coin-front">
-						<div className="sh-coin-art">Coin</div>
+						<img src={coinImage} alt="Coin" className="sh-intro-video" />
 					</div>
 					<div className="sh-coin-face sh-coin-back">
 						<video ref={introVideoRef} className="sh-media sh-intro-video" src={introVideo} controls playsInline preload="auto" />
