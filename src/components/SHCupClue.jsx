@@ -2,17 +2,25 @@ import { useState } from "react";
 
 const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 const seats = ["Seat 1", "Seat 2", "Seat 3", "Seat 4"];
-
 const correctOrder = ["Hufflepuff", "Ravenclaw", "Gryffindor", "Slytherin"];
+
+const houseClues = {
+    Gryffindor: "I heard the object was made of gold.",
+    Hufflepuff: "My friend says it once belonged to one of the four founders.",
+    Ravenclaw: "Someone mentioned that its owner valued hard work above everything else.",
+    Slytherin: "Tom Riddle eventually became interested in it.",
+};
+
+const createEmptyAssignments = () => ({
+    "Seat 1": null,
+    "Seat 2": null,
+    "Seat 3": null,
+    "Seat 4": null,
+});
 
 const SHCupClue = () => {
     const [draggedHouse, setDraggedHouse] = useState(null);
-    const [assignments, setAssignments] = useState({
-        "Seat 1": null,
-        "Seat 2": null,
-        "Seat 3": null,
-        "Seat 4": null,
-    });
+    const [assignments, setAssignments] = useState(createEmptyAssignments());
 
     const onDragStart = (house) => {
         setDraggedHouse(house);
@@ -34,6 +42,11 @@ const SHCupClue = () => {
         setDraggedHouse(null);
     };
 
+    const resetBoard = () => {
+        setAssignments(createEmptyAssignments());
+        setDraggedHouse(null);
+    };
+
     const isSolved = seats.every((seat, index) => assignments[seat] === correctOrder[index]);
     const availableHouses = houses.filter((house) => !Object.values(assignments).includes(house));
 
@@ -49,10 +62,17 @@ const SHCupClue = () => {
                 <li>4. The Gryffindor was not sitting beside the Hufflepuff.</li>
                 <li>5. The Hufflepuff was sitting closer to the left end of the table than the Slytherin.</li>
             </ul>
-            <p className="sh-italic-text">Gryffindor student: “I heard the object was made of gold.”</p>
-            <p className="sh-italic-text">Hufflepuff student: “My friend says it once belonged to one of the four founders.”</p>
-            <p className="sh-italic-text">Ravenclaw student: “Someone mentioned that its owner valued hard work above everything else.”</p>
-            <p className="sh-italic-text">Slytherin student: “Tom Riddle eventually became interested in it.”</p>
+
+            <div className="sh-cup-controls">
+                <div className="sh-cup-seat-legend" aria-label="Seating chart from left to right">
+                    <span className="sh-cup-table-edge">Left end</span>
+                    {seats.map((seat) => (
+                        <span key={seat} className="sh-cup-seat-tag">{seat}</span>
+                    ))}
+                    <span className="sh-cup-table-edge">Right end</span>
+                </div>
+                <button type="button" className="sh-cup-reset-btn" onClick={resetBoard}>Reset seating chart</button>
+            </div>
 
             <div className="sh-locket-game">
                 <div className="sh-locket-pool">
@@ -69,20 +89,45 @@ const SHCupClue = () => {
                 </div>
 
                 <div className="sh-locket-slots">
-                    {seats.map((seat) => (
-                        <div
-                            key={seat}
-                            className="sh-locket-slot"
-                            onDragOver={(e) => e.preventDefault()}
-                            onDrop={() => onDrop(seat)}
-                        >
-                            <span className="sh-locket-founder">{seat}</span>
-                            <div className="sh-locket-slot-value">
-                                {assignments[seat] || "Drop house here"}
+                    {seats.map((seat) => {
+                        const house = assignments[seat];
+                        const isCorrect = house === correctOrder[seats.indexOf(seat)];
+
+                        return (
+                            <div
+                                key={seat}
+                                className={`sh-locket-slot ${isCorrect ? "is-correct" : ""}`}
+                                onDragOver={(e) => e.preventDefault()}
+                                onDrop={() => onDrop(seat)}
+                            >
+                                <span className="sh-locket-founder">
+                                    {seat}
+                                    {seat === "Seat 1" ? " (left)" : seat === "Seat 4" ? " (right)" : ""}
+                                </span>
+                                <div className="sh-locket-slot-value">
+                                    {house || "Drop house here"}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
+            </div>
+
+            <div className="sh-cup-clue-list">
+                {seats.map((seat) => {
+                    const house = assignments[seat];
+                    const isCorrect = house === correctOrder[seats.indexOf(seat)];
+
+                    if (!isCorrect || !house) {
+                        return null;
+                    }
+
+                    return (
+                        <div key={seat} className="sh-cup-clue-reveal">
+                            <p className="sh-italic-text"><strong>{house} student:</strong> “{houseClues[house]}”</p>
+                        </div>
+                    );
+                })}
             </div>
 
             {isSolved && (

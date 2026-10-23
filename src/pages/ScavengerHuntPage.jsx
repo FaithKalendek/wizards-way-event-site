@@ -13,6 +13,7 @@ import SHCupClue from "../components/SHCupClue.jsx";
 import SHDiademClue from "../components/SHDiademClue.jsx";
 import SHNaginiClue from "../components/SHNaginiClue.jsx";
 import SHHarryClue from "../components/SHHarryClue.jsx";
+import SHPensieveClue from "../components/SHPensieveClue.jsx";
 
 const ScavengerHuntPage = () => {
     const { clueSlug } = useParams();
@@ -112,6 +113,8 @@ const ScavengerHuntPage = () => {
                 return <SHNaginiClue />;
             case 'harry':
                 return <SHHarryClue />;
+            case 'pensieve':
+                return <SHPensieveClue />;
             case 'reward':
                 return <SHEnding userInfo={userInfo} currentTime={finalTimeCaptured ?? currentTime} timeTaken={timeTaken} setTimeTaken={setTimeTaken} />;
             default:
