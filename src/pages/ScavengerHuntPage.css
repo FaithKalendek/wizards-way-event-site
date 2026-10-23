@@ -16,6 +16,12 @@
 	margin: 1.5rem 0;
 }
 
+.sh-coin-wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .sh-coin-card {
 	position: relative;
 	width: min(62vw, 420px);
@@ -77,6 +83,36 @@
 	font-weight: 700;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
+}
+
+.sh-coin-hint {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	padding: 0;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	color: rgba(255, 246, 210, 0.95);
+	font-size: calc(0.075 * var(--coin-width, 420px));
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: lowercase;
+	text-align: center;
+	line-height: 1.2;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.sh-coin-card {
+	--coin-width: min(62vw, 420px);
+	width: var(--coin-width);
+	height: min(42vw, 280px);
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	cursor: pointer;
 }
 
 .sh-intro-video-placeholder {

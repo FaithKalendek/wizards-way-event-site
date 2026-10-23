@@ -62,12 +62,15 @@ const SHWelcome = ({ setUserInfo, startHunt }) => {
 	return (
 		<section className="sh-step sh-welcome">
 			<div className="sh-signup-intro">
-				<div className={`sh-coin-card ${isFlipped ? "flipped" : ""}`} onClick={isFlipped ? undefined : handleCoinFlip} role="button" tabIndex={isFlipped ? -1 : 0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isFlipped) handleCoinFlip(); } }}>
-					<div className="sh-coin-face sh-coin-front">
-						<img src={coinImage} alt="Coin" className="sh-intro-video" />
-					</div>
-					<div className="sh-coin-face sh-coin-back">
-						<video ref={introVideoRef} className="sh-media sh-intro-video" src={introVideo} controls playsInline preload="auto" />
+				<div className="sh-coin-wrap">
+					<div className={`sh-coin-card ${isFlipped ? "flipped" : ""}`} onClick={isFlipped ? undefined : handleCoinFlip} role="button" tabIndex={isFlipped ? -1 : 0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!isFlipped) handleCoinFlip(); } }}>
+						<div className="sh-coin-face sh-coin-front">
+							<img src={coinImage} alt="Coin" className="sh-intro-video" />
+							<div className="sh-coin-hint">click on me</div>
+						</div>
+						<div className="sh-coin-face sh-coin-back">
+							<video ref={introVideoRef} className="sh-media sh-intro-video" src={introVideo} controls playsInline preload="auto" />
+						</div>
 					</div>
 				</div>
 			</div>
