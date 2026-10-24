@@ -147,7 +147,7 @@ const SHCupClue = () => {
 
             {isSolved && (
                 <p className="success sh-italic-text">
-                    OBJECT IDENTIFIED: HELGA HUFFLEPUFF&apos;S CUP.
+                    OBJECT IDENTIFIED: HELGA HUFFLEPUFF&apos;S CUP, #1 House, found under the seat of Luna Lovegood who states: “I was looking for the diadem, I think I&apos;ll try the whomping willow next.”
                 </p>
             )}
         </section>
