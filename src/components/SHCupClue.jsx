@@ -58,7 +58,6 @@ const SHCupClue = () => {
         <section className="sh-step sh-clue-page">
             <h2>The Cup</h2>
             <p className="sh-italic-text">“Four students were seen carrying information about one of the objects we&apos;re looking for. Unfortunately, the seating chart has been scrambled and we can&apos;t find them. We know four students were involved. One from each house. Place each student in the correct seat. Every correct placement will reveal a piece of the rumor surrounding the object.”</p>
-            <p className="sh-italic-text"><strong>Seat 1 (H) — Seat 2 (R) — Seat 3 (G) — Seat 4 (S)</strong></p>
             <ul className="sh-italic-text">
                 <li>1. The Ravenclaw was sitting at neither end of the table.</li>
                 <li>2. The Ravenclaw was sitting somewhere to the left of Gryffindor.</li>
