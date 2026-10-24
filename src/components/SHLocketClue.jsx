@@ -17,6 +17,7 @@ const solution = {
 
 const SHLocketClue = () => {
     const [draggedRelic, setDraggedRelic] = useState(null);
+    const [selectedRelic, setSelectedRelic] = useState(null);
     const [assignments, setAssignments] = useState({
         Gryffindor: null,
         Hufflepuff: null,
@@ -28,20 +29,22 @@ const SHLocketClue = () => {
         setDraggedRelic(relicId);
     };
 
-    const onDrop = (founder) => {
-        if (!draggedRelic) return;
+    const placeRelic = (founder) => {
+        const relicToPlace = draggedRelic || selectedRelic;
+        if (!relicToPlace) return;
 
         setAssignments((prev) => {
             const next = { ...prev };
             Object.keys(next).forEach((key) => {
-                if (next[key] === draggedRelic) {
+                if (next[key] === relicToPlace) {
                     next[key] = null;
                 }
             });
-            next[founder] = draggedRelic;
+            next[founder] = relicToPlace;
             return next;
         });
         setDraggedRelic(null);
+        setSelectedRelic(null);
     };
 
     const isSolved = founders.every((founder) => assignments[founder] && assignments[founder] === Object.entries(solution).find(([, owner]) => owner === founder)?.[0]);
@@ -61,9 +64,18 @@ const SHLocketClue = () => {
                     {availableRelics.map((relic) => (
                         <div
                             key={relic.id}
-                            className="sh-locket-card"
+                            className={`sh-locket-card ${selectedRelic === relic.id ? "is-selected" : ""}`}
                             draggable
                             onDragStart={() => onDragStart(relic.id)}
+                            onClick={() => setSelectedRelic(relic.id)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setSelectedRelic(relic.id);
+                                }
+                            }}
                         >
                             {relic.name}
                         </div>
@@ -76,7 +88,8 @@ const SHLocketClue = () => {
                             key={founder}
                             className="sh-locket-slot"
                             onDragOver={(e) => e.preventDefault()}
-                            onDrop={() => onDrop(founder)}
+                            onDrop={() => placeRelic(founder)}
+                            onClick={() => placeRelic(founder)}
                         >
                             <span className="sh-locket-founder">{founder}</span>
                             <div className="sh-locket-slot-value">
@@ -86,6 +99,8 @@ const SHLocketClue = () => {
                     ))}
                 </div>
             </div>
+
+            <p className="hint sh-italic-text">On mobile: tap a relic, then tap a founder to place it.</p>
 
             {isSolved && (
                 <p className="success sh-italic-text">

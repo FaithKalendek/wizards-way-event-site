@@ -20,31 +20,35 @@ const createEmptyAssignments = () => ({
 
 const SHCupClue = () => {
     const [draggedHouse, setDraggedHouse] = useState(null);
+    const [selectedHouse, setSelectedHouse] = useState(null);
     const [assignments, setAssignments] = useState(createEmptyAssignments());
 
     const onDragStart = (house) => {
         setDraggedHouse(house);
     };
 
-    const onDrop = (seat) => {
-        if (!draggedHouse) return;
+    const placeHouseInSeat = (seat) => {
+        const houseToPlace = draggedHouse || selectedHouse;
+        if (!houseToPlace) return;
 
         setAssignments((prev) => {
             const next = { ...prev };
             Object.keys(next).forEach((key) => {
-                if (next[key] === draggedHouse) {
+                if (next[key] === houseToPlace) {
                     next[key] = null;
                 }
             });
-            next[seat] = draggedHouse;
+            next[seat] = houseToPlace;
             return next;
         });
         setDraggedHouse(null);
+        setSelectedHouse(null);
     };
 
     const resetBoard = () => {
         setAssignments(createEmptyAssignments());
         setDraggedHouse(null);
+        setSelectedHouse(null);
     };
 
     const isSolved = seats.every((seat, index) => assignments[seat] === correctOrder[index]);
@@ -79,9 +83,18 @@ const SHCupClue = () => {
                     {availableHouses.map((house) => (
                         <div
                             key={house}
-                            className="sh-locket-card"
+                            className={`sh-locket-card ${selectedHouse === house ? "is-selected" : ""}`}
                             draggable
                             onDragStart={() => onDragStart(house)}
+                            onClick={() => setSelectedHouse(house)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    setSelectedHouse(house);
+                                }
+                            }}
                         >
                             {house}
                         </div>
@@ -98,7 +111,8 @@ const SHCupClue = () => {
                                 key={seat}
                                 className={`sh-locket-slot ${isCorrect ? "is-correct" : ""}`}
                                 onDragOver={(e) => e.preventDefault()}
-                                onDrop={() => onDrop(seat)}
+                                onDrop={() => placeHouseInSeat(seat)}
+                                onClick={() => placeHouseInSeat(seat)}
                             >
                                 <span className="sh-locket-founder">
                                     {seat}
@@ -112,6 +126,8 @@ const SHCupClue = () => {
                     })}
                 </div>
             </div>
+
+            <p className="hint sh-italic-text">On mobile: tap a house, then tap a seat to place it.</p>
 
             <div className="sh-cup-clue-list">
                 {seats.map((seat) => {
