@@ -37,9 +37,6 @@ const SHWelcome = ({ setUserInfo, startHunt }) => {
 			startHunt(info);
 		}
 		setShowInProgress(true);
-		setTimeout(() => {
-			navigate("/scavengerhunt/diary");
-		}, 1200);
 	};
 
 	const handleCodeChange = (value) => {
