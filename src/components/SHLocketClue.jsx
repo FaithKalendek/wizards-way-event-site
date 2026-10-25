@@ -103,12 +103,15 @@ const SHLocketClue = () => {
             <p className="hint sh-italic-text">On mobile: tap a relic, then tap a founder to place it.</p>
 
             {isSolved && (
+                <>
                 <p className="success sh-italic-text">
                     RECORDS RESTORED. <br />
                     Three founders stood together and feasted well, <br />
                     One slinked away. <br />
                     3 — 1
                 </p>
+                <p>Proceed to the seating area.</p>
+                </>
             )}
         </section>
     );
