@@ -94,16 +94,28 @@
 	background: transparent;
 	border: none;
 	border-radius: 0;
-	color: rgba(255, 246, 210, 0.95);
-	font-size: calc(0.075 * var(--coin-width, 420px));
-	font-weight: 700;
-	letter-spacing: 0.08em;
-	text-transform: lowercase;
+	color: #171b25;
+	font-size: clamp(1.3rem, 3.8vw, 1.75rem);
+	font-family: "Arial Black", "Trebuchet MS", sans-serif;
+	font-weight: 900;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
 	text-align: center;
 	line-height: 1.2;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+	-webkit-text-stroke: 0.35px rgba(255, 248, 223, 0.85);
+	text-shadow: 0 1px 0 rgba(255, 248, 223, 0.8), 0 2px 4px rgba(255, 255, 255, 0.35);
 	pointer-events: none;
 	white-space: nowrap;
+	animation: sh-coin-hint-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes sh-coin-hint-pulse {
+	0%, 100% { opacity: 0.9; }
+	50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sh-coin-hint { animation: none; }
 }
 
 .sh-coin-card {
