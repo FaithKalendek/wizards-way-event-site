@@ -110,7 +110,7 @@ const SHLocketClue = () => {
                     One slinked away. <br />
                     3 — 1
                 </p>
-                <p>Proceed to the seating area.</p>
+                <p>Number: 31, Proceed to the seating area.</p>
                 </>
             )}
         </section>

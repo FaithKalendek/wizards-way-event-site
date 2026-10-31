@@ -40,6 +40,7 @@ const SHDiademClue = () => {
                         VOLDEMORT.
                         The number you seek is hidden there.”
                     </p>
+                    <p>Number: 9, Proceed to the Slytherin banner.</p>
                 </div>
             )}
         </section>

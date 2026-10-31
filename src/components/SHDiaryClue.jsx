@@ -27,6 +27,9 @@ const SHDiaryClue = () => {
             <p className="sh-italic-text">We&apos;ve intercepted a recording that may contain information about one of the objects we&apos;re looking for. This diary belonged to Tom Riddle when he was a student at Hogwarts. Someone has been using it to communicate with students. We don&apos;t know why, but Dumbledore seemed particularly concerned about it.</p>
             <p className="sh-italic-text">If you find it, don&apos;t write in it, don&apos;t even look at it too long or it might just snatch you up like it did Ginny Weasley! I wonder where that poor girl got taken…</p>
             <video className="sh-media" src={diaryVideo} controls playsInline />
+            (revealed && (
+                <p>Number: 0, Proceed to the Chamber of Secrets.</p>
+            ))
         </section>
     );
 };

@@ -99,7 +99,7 @@ const SHRingClue = () => {
                         <p>The Gaunt family claimed descent from Salazar Slytherin. They were obsessed with bloodlines, old magic, and objects that proved their ancestry. This ring appears to have belonged to Marvolo Gaunt.</p>
                         <p>The box is damaged, though. Someone&apos;s left a note inside the lid.</p>
                         <p><strong>R.A.B.</strong> — 7</p>
-                        <p>Proceed to the Black Lake.</p>
+                        <p>Number: 7, Proceed to the Black Lake.</p>
                     </div>
                 </div>
             )}

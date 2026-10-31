@@ -133,7 +133,7 @@ const SHWelcome = ({ setUserInfo, startHunt }) => {
 				{codeMessage && <p className={codeMessage === "Correct code!" ? "success" : "error"}>{codeMessage}</p>}
 			</form>
 
-			{showInProgress && <p className="success">Scavenger Hunt in progress! Good luck!</p>}
+			{showInProgress && <p className="success">Scavenger Hunt in progress! Good luck! Proceed to Dumbledore's office.</p>}
 		</section>
 	);
 };
