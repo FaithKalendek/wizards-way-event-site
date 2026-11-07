@@ -6,31 +6,27 @@ import spellClashAudio from "../assets/official spell clash sound.mp4";
 import stoneSoundAudio from "../assets/official stone sound.mp4";
 import hissAudio from "../assets/official hiss sound.mp4";
 import screamAudio from "../assets/official scream sound.mp4";
-import soundSequenceAudio from "../assets/sound sequence answer.mp3";
+import soundSequenceAudio from "../assets/sound sequence answer short.mp3";
 
 const SHRingClue = () => {
     const [sequence, setSequence] = useState([]);
     const [solved, setSolved] = useState(false);
 
     const finalSequence = [
+        "spell",
         "water",
         "parseltongue",
         "scraping",
-        "hiss",
         "hiss",
         "scream",
-        "spell",
-        "scraping",
-        "water",
-        "parseltongue",
     ];
 
     const tones = [
         "water",
-        "parseltongue",
         "scraping",
-        "hiss",
         "scream",
+        "parseltongue",
+        "hiss",
         "spell",
     ];
 
